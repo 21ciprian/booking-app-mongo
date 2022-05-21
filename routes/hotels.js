@@ -17,8 +17,17 @@ router.put('/:id', async (req, res) => {
   try
   {
     const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-    // const savedHotel = await updatedHotel
     res.status(200).json(updatedHotel)
+  } catch (error)
+  {
+    res.status(500).json(error)
+  }
+})
+router.delete('/:id', async (req, res) => {
+  try
+  {
+    await Hotel.findByIdAndDelete(req.params.id)
+    res.status(200).json({ message: 'Hotel deleted' })
   } catch (error)
   {
     res.status(500).json(error)
