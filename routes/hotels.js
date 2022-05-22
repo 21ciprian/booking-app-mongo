@@ -1,12 +1,10 @@
 import express from 'express'
-import { createHotel } from '../controllers/hotel.js'
+import { createHotel, updateHotel } from '../controllers/hotel.js'
 import Hotel from '../models/Hotel.js'
 
 const router = express.Router()
-router.post('/', async (req, res) => {
-
-})
-router.put('/:id', createHotel)
+router.post('/', createHotel)
+router.put('/:id', updateHotel)
 router.delete('/:id', async (req, res) => {
   try
   {
