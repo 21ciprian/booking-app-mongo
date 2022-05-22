@@ -1,20 +1,11 @@
 import express from 'express'
-import { createHotel, updateHotel } from '../controllers/hotel.js'
+import { createHotel, deleteHotel, updateHotel } from '../controllers/hotel.js'
 import Hotel from '../models/Hotel.js'
 
 const router = express.Router()
 router.post('/', createHotel)
 router.put('/:id', updateHotel)
-router.delete('/:id', async (req, res) => {
-  try
-  {
-    await Hotel.findByIdAndDelete(req.params.id)
-    res.status(200).json({ message: 'Hotel deleted' })
-  } catch (error)
-  {
-    res.status(500).json(error)
-  }
-})
+router.delete('/:id', deleteHotel)
 router.get('/:id', async (req, res) => {
   try
   {
