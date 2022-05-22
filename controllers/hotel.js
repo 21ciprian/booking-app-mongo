@@ -29,3 +29,13 @@ export const deleteHotel = async (req, res, next) => {
     next(error)
   }
 }
+export const getHotel = async (req, res, next) => {
+  try
+  {
+    const hotel = await Hotel.findById(req.params.id)
+    res.status(200).json(hotel)
+  } catch (error)
+  {
+    next(error)
+  }
+}
