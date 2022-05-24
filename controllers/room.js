@@ -33,3 +33,13 @@ export const updateRoom = async (req, res, next) => {
     next(error)
   }
 }
+export const deleteRoom = async (req, res, next) => {
+  try
+  {
+    await Room.findByIdAndDelete(req.params.id)
+    res.status(200).json({ message: 'Room deleted' })
+  } catch (error)
+  {
+    next(error)
+  }
+}
