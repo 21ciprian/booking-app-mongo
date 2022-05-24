@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
@@ -7,6 +8,7 @@ import roomsRoute from './routes/rooms.js'
 import usersRoute from './routes/users.js'
 
 const app = express()
+app.use(cookieParser())
 app.use(express.json())
 app.use(cors())
 const PORT = process.env.PORT || 5050
