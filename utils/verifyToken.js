@@ -28,3 +28,14 @@ export const verifyUser = (req, res, next) => {
     }
   })
 }
+export const verifyIsAdmin = (req, res, next) => {
+  verifyToken(req, res, () => {
+    if (req.user.isAdmin)
+    {
+      next()
+    } else
+    {
+      return next(createError(403, 'You are not authorized!'))
+    }
+  })
+}
