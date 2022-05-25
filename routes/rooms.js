@@ -5,7 +5,7 @@ import { verifyIsAdmin } from '../utils/verifyToken.js'
 const router = express.Router()
 router.post('/:hotelId', verifyIsAdmin, createRoom)
 router.put('/:id', verifyIsAdmin, updateRoom)
-router.delete('/:id', verifyIsAdmin, deleteRoom)
+router.delete('/:hotelId/:id', verifyIsAdmin, deleteRoom)
 router.get('/:id', getRoom)
 router.get('/', getRooms)
 
